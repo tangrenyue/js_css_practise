@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>polygon</title>
+    <link rel="stylesheet" href="polygon.css">
+</head>
+
+<style>
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: coral;
+}
+
+.rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: gold;
+}
+
+.acute-triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid blue;
+}
+
+.right-triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid yellow;
+    border-right: 50px solid transparent;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid yellow;
+}
+
+.rhomboid {
+    width: 200px;
+    height: 100px;
+    margin-left: 30px;
+    background-color: orange;
+    transform: skewX(30deg)
+}
+
+.trapezoid {
+    width: 100px;
+    height: 0;
+    border-bottom: 100px solid green;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+</style>
+
+<body>
+    <div class="square"></div><br/>
+    <div class="rectangle"></div><br/>
+    <div class="acute-triangle"></div><br>
+    <div class="right-triangle"></div><br>
+    <div class="rhomboid"></div><br>
+    <div class="trapezoid"></div><br>
+    <div class="circle"></div><br>
+</body>
