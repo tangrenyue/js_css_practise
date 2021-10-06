@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>有效的括号</title>
+</head>
+
+<body>
+    <div class="box">
+        有效的括号
+    </div>
+    <script>
+        //给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+
+        // 有效字符串需满足：
+        // 左括号必须用相同类型的右括号闭合。
+        // 左括号必须以正确的顺序闭合。
+        // 注意空字符串可被认为是有效字符串。
+
+        // 思路
+        // 1、分析括号匹配条件：第一种（非嵌套情况）：{} [] ； 第二种（嵌套情况）：{ [ ( ) ] } 。 除去这两种情况都不是符合条件的。
+        // 2、然后，我们将这些括号自右向左看做栈结构，右侧是栈顶，左侧是栈尾。
+        // 3、如果编译器中的括号左括号，我们就入栈（左括号不用检查匹配）；如果是右括号，就取出栈顶元素检查是否匹配。（提前将成对的括号通过键值对的方式存到散列表中）
+        // 4、如果匹配，就出栈。否则，就返回 false；
+
+        var isValid = function (s) {
+            let stack = [];
+            //将括号匹配存入散列表中
+            let map = new Map();
+            map.set(")", "(");
+            map.set("]", "[");
+            map.set("}", "{");
+            // 取出字符串中的括号
+            for (let i = 0; i < s.length; i++) {
+                let c = s[i];
+                //如果是右括号，如果栈中不为空就出栈栈顶数据
+                if (map.has(c)) {
+                    //判断栈此时是否为0
+                    if (stack.length !== 0) {
+                        //如果栈顶元素不相同，就返回 false
+                        if (stack.pop() !== map.get(c)) {
+                            return false;
+                        }
+                        //如果此时栈内无元素，返回false
+                    } else {
+                        return false;
+                    }
+                } else {
+                    //如果是左括号，就进栈
+                    stack.push(c);
+                }
+            }
+            //如果栈为空，括号全部匹配成功
+            return stack.length === 0;
+        };
+        let str = "({(})";
+        console.log(isValid(str));
+    </script>
+</body>
+
+</html>
