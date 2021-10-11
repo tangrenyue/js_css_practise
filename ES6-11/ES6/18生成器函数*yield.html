@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器</title>
+</head>
+
+<body>
+    <script>
+        //生成器其实就是一个特殊的函数  *中间位置没要求
+        //异步编程  纯回调函数  node fs  ajax mongodb
+        //函数代码的分隔符  yield    next()
+        function* gen1() {
+            console.log(111);
+            console.log(222);
+            console.log(333);
+            console.log(444);
+        }
+        let iterator1 = gen1(); 
+        // console.log(iterator); //gen1
+        iterator1.next();//111 222 333 444
+        console.log(iterator1.next());//obj={value: undefined, done: true}
+
+        // ================================
+        function* gen() {
+            console.log(111);
+            yield '一只没有耳朵';
+            console.log(222);
+            yield '一只没有尾部';
+            console.log(333);
+            yield '真奇怪';
+            console.log(444);
+        }
+        // gen().next();//111 
+        // gen().next();//111
+        // gen().next();//111  
+        // gen().next();//111 
+
+        // let iterator = gen(); 
+        // iterator.next()//111 
+        // iterator.next()//222
+        // iterator.next()//333
+        // iterator.next()//444
+        // console.log(iterator.next());//111 {value: '一只没有耳朵', done: false} 
+        // console.log(iterator.next());// 222{value: '一只没有尾部', done: false} 
+        // console.log(iterator.next());//333{value: '真奇怪', done: false}
+        // console.log(iterator.next()); //444{value: undefined, done: true}
+
+        //遍历
+        for (let v of gen()) {
+            console.log(v);//28行111 53行一只没有耳朵 30行222 53行一只没有尾部 32行333 53行真奇怪 34行444
+        }
+
+    </script>
+</body>
+
+</html>
