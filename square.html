@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>square</title>
+</head>
+
+<style>
+.box {
+  /* 不给你父元素长宽高，在里面写一个子元素。要求跟父元素的款一样宽的正方形
+  宽高不确定   子元素都是跟父元素一样宽的正方形 
+  宽高可以任意取   为了方便演示：这里设置成固定宽高了 */
+  width: 200px; 
+  height: 300px;
+  border: 1px solid red;
+}
+
+.inner {
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: #007fff;
+}
+</style>
+<body>
+    <div class="box">
+        <div class="inner"></div>
+    </div>  
+</body>
