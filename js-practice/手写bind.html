@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    Function.prototype.myBind = function (context, ...args1) {
+      context = context || window
+      const _this = this
+      // 要返回的函数，内部直接借用apply改变this指向
+      function F(...args2) {
+        _this.apply(context, [...args1, ...args2])
+      }
+      F.prototype = Object.create(this.prototype) // 返回的函数的原型继承原函数的原型
+      return F
+    }
+
+    var obj = {
+      a: 1
+    }
+    function test() {
+      console.log(this)
+    }
+    t = test.bind(obj)
+    t() // {a:2}
+  </script>
+</body>
+
+</html>
