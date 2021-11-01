@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 函数节流：一个函数执行一次后，只有大于设定的执行周期后オ会执行第二次
+    // 节流函数参数  fn 要被节流的函数 delay 规定的时间
+
+    function throttle(fn, delay) {
+      var last = 0;
+      return function () {
+        var curr = +new Date();
+        if (curr - last > delay) {
+          fn.apply(this, arguments);
+          last = curr;
+        }
+      }
+    }
+    function test() {
+      console.log("test");
+    }
+    var throttled = throttle(hi, 200);
+    throttled();
+    throttled();
+
+
+
+  </script>
+</body>
+
+</html>
